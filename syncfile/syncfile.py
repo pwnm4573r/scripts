@@ -19,7 +19,7 @@ def sync_folders(source, replica):
                 os.makedirs(replica_dir)
                 logging.info(f"Created directory: {replica_dir}")
 
-        # This checks for missing or older versions of files in replica folder and creates/updates these files.
+        # This checks for missing or older version of files in replica folder and creates/updates these files.
         # We use copy2 because it also copies metadata, which we need for comparing file versions using the .getmtime method and update if neccessary.
         for file in files:
             source_file = os.path.join(root, file)
@@ -62,7 +62,7 @@ def main():
     parser.add_argument("logfile", help="Path to the log file")
     args = parser.parse_args()
 
-    # Configuring logging both to the log file and to the console.
+    # Configure logging both to the log file and to the console.
     logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s", handlers=[logging.FileHandler(args.logfile), logging.StreamHandler()])
 
     # Performs folder sync periodically 
